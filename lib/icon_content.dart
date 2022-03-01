@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'constants.dart';
 
-const textStyle = TextStyle(
-  fontSize: 18.0, color: Color(0xFF8D8E98),
-);
 class iconcontent extends StatelessWidget {
   iconcontent(this.icon1,this.iconText);
   final IconData icon1;
@@ -20,7 +18,7 @@ class iconcontent extends StatelessWidget {
         SizedBox(
           height: 15.0,
         ),
-        Text(iconText,style: textStyle,)
+        Text(iconText,style: kTextStyle,)
 
       ],
     );
