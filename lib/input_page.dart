@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icon_content.dart';
+import 'reusable_card.dart';
 
-
+const bottomContainerHeight = 80.0;
+const actaiveCardsColor = Color(0xFF1D1E33);
+const inactaiveCardsColor = Color(0xFF111328);
+const bottomContainerColor = Color(0xFFEB1555);
+enum Gender{
+  male,
+  female,
+}
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender selectedGender;
+  Color maleCardColor = inactaiveCardsColor;
+  Color femaleCardColor = inactaiveCardsColor;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,17 +33,38 @@ class _InputPageState extends State<InputPage> {
         children: [
           Expanded(child: Row(
             children: [
-              Expanded(child: ReuseableCard(Color(0xFF1D1E33))),
-              Expanded(child:ReuseableCard(Color(0xFF1D1E33)))
+              Expanded(child: ReuseableCard(selectedGender == Gender.male? actaiveCardsColor:inactaiveCardsColor,
+              cardChild: iconcontent(FontAwesomeIcons.mars,"MALE"),
+                onPress: (){
+                setState(() {
+                  selectedGender = Gender.male;
+                });
+                },
+              )),
+              Expanded(child:ReuseableCard(selectedGender == Gender.female? actaiveCardsColor:inactaiveCardsColor,
+              cardChild: iconcontent(FontAwesomeIcons.venus, "FEMALE"),
+                onPress: (){
+                setState(() {
+                  selectedGender = Gender.female;
+                });
+                },
+              ))
             ],
           )),
-          Expanded(child: ReuseableCard(Color(0xFF1D1E33))),
+          Expanded(child: ReuseableCard(actaiveCardsColor)),
           Expanded(child: Row(
             children: [
-              Expanded(child: ReuseableCard(Color(0xFF1D1E33))),
-              Expanded(child: ReuseableCard(Color(0xFF1D1E33)))
+              Expanded(child: ReuseableCard(actaiveCardsColor)),
+              Expanded(child: ReuseableCard(actaiveCardsColor))
             ],
           )),
+          Container(
+            color: bottomContainerColor,
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: bottomContainerHeight,
+            
+          )
         ],
       ),
 
@@ -35,19 +72,7 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class ReuseableCard extends StatelessWidget {
-  ReuseableCard(this.colors1);
-  Color colors1;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-          color: colors1,
-          borderRadius: BorderRadius.circular(10.0)),
 
-    );
-  }
-}
+
 
