@@ -18,7 +18,7 @@ class CalculatorBrain{
     }else if (_bmi > 18.5){
       return 'Normal';
     }else{
-      return 'UnderWwight';
+      return 'UnderWeight';
     }
   }
   String getInterpretation(){

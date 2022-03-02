@@ -5,6 +5,10 @@ import '../components/bottom_button.dart';
 import 'input_page.dart';
 
 class ResultsPage extends StatelessWidget {
+    ResultsPage({required this.bmiResult,required this.resultText, required this.interpretation});
+    final String bmiResult;
+    final String resultText;
+    final String interpretation;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +31,9 @@ class ResultsPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-                Text('OverWeight',style: kResultsStyle,),
-              Text('80',style: kBMIStyle,),
-              Text('Description',
+                Text(resultText.toUpperCase(),style: kResultsStyle,),
+              Text(bmiResult,style: kBMIStyle,),
+              Text(interpretation,
                 textAlign: TextAlign.center,
                 style: kBodyTextStyle,)
             ],
